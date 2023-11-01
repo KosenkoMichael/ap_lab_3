@@ -13,7 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
+        MainWindow.setObjectName("Weather")
         MainWindow.setFixedSize(461, 218)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -55,7 +55,7 @@ class Ui_MainWindow(object):
         self.pushButton_5.setObjectName("pushButton_5")
 
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(170, 100, 121, 51))
+        self.label.setGeometry(QtCore.QRect(133, 80, 300, 100))
         self.label.setObjectName("label")
 
         MainWindow.setCentralWidget(self.centralwidget)
@@ -76,14 +76,17 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.pushButton.setText(_translate("MainWindow", "Select main file"))
 
-        self.select_pushButton_2.setText(_translate("MainWindow", "add folder"))
+        self.select_pushButton_2.setText(
+            _translate("MainWindow", "add folder"))
         self.pushButton_2.setText(_translate("MainWindow", "Cut by data/date"))
 
-        self.select_pushButton_3.setText(_translate("MainWindow", "add folder"))
+        self.select_pushButton_3.setText(
+            _translate("MainWindow", "add folder"))
         self.pushButton_3.setText(_translate("MainWindow", "Cut by years"))
 
         self.pushButton_4.setText(_translate("MainWindow", "cut by weaks"))
-        self.select_pushButton_4.setText(_translate("MainWindow", "add folder"))
-        
+        self.select_pushButton_4.setText(
+            _translate("MainWindow", "add folder"))
+
         self.pushButton_5.setText(_translate("MainWindow", "get data"))
-        self.label.setText(_translate("MainWindow", "void data"))
+        self.label.setText(_translate("MainWindow", ""))

@@ -1,1 +1,6 @@
 __pycache__/
+dataset.csv
+years/
+weaks/
+data_date/
+*.ui
