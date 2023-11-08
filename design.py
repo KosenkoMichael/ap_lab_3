@@ -21,42 +21,155 @@ class Ui_MainWindow(object):
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton.setGeometry(QtCore.QRect(10, 10, 121, 51))
         self.pushButton.setObjectName("pushButton")
+        self.pushButton.setStyleSheet("""
+        QPushButton {
+            background-color: rgb(219, 219, 219); 
+            color: black;
+            border-radius: 5%;
+        }
+        QPushButton:hover {
+            background-color:gray;
+            color:white;
+            border: 1px solid black;
+        }
+    """)
 
         self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_2.setGeometry(QtCore.QRect(170, 10, 121, 51))
         self.pushButton_2.setObjectName("pushButton_2")
+        self.pushButton_2.setStyleSheet("""
+        QPushButton {
+            background-color: rgb(219, 219, 219); 
+            color: black;
+            border-radius: 5%;
+        }
+        QPushButton:hover {
+            background-color:gray;
+            color:white;
+            border: 1px solid black;
+        }
+    """)
 
         self.select_pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
-        self.select_pushButton_2.setGeometry(QtCore.QRect(230, 61, 60, 20))
+        self.select_pushButton_2.setGeometry(QtCore.QRect(230, 71, 60, 20))
         self.select_pushButton_2.setObjectName("select_pushButton_2")
+        self.select_pushButton_2.setStyleSheet("""
+        QPushButton {
+            background-color: rgb(219, 219, 219); 
+            color: black;
+            border-radius: 5%;
+        }
+        QPushButton:hover {
+            background-color:gray;
+            color:white;
+            border: 1px solid black;
+        }
+    """)
 
         self.pushButton_3 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_3.setGeometry(QtCore.QRect(330, 10, 121, 51))
         self.pushButton_3.setObjectName("pushButton_3")
+        self.pushButton_3.setStyleSheet("""
+        QPushButton {
+            background-color: rgb(219, 219, 219); 
+            color: black;
+            border-radius: 5%;
+        }
+        QPushButton:hover {
+            background-color:gray;
+            color:white;
+            border: 1px solid black;
+        }
+    """)
 
         self.select_pushButton_3 = QtWidgets.QPushButton(self.centralwidget)
-        self.select_pushButton_3.setGeometry(QtCore.QRect(390, 61, 60, 20))
+        self.select_pushButton_3.setGeometry(QtCore.QRect(390, 71, 60, 20))
         self.select_pushButton_3.setObjectName("select_pushButton_3")
+        self.select_pushButton_3.setStyleSheet("""
+        QPushButton {
+            background-color: rgb(219, 219, 219); 
+            color: black;
+            border-radius: 5%;
+        }
+        QPushButton:hover {
+            background-color:gray;
+            color:white;
+            border: 1px solid black;
+        }
+    """)
 
         self.pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_4.setGeometry(QtCore.QRect(330, 100, 121, 51))
         self.pushButton_4.setObjectName("pushButton_4")
+        self.pushButton_4.setStyleSheet("""
+        QPushButton {
+            background-color: rgb(219, 219, 219); 
+            color: black;
+            border-radius: 5%;
+        }
+        QPushButton:hover {
+            background-color:gray;
+            color:white;
+            border: 1px solid black;
+        }
+    """)
 
         self.select_pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
-        self.select_pushButton_4.setGeometry(QtCore.QRect(390, 150, 60, 20))
+        self.select_pushButton_4.setGeometry(QtCore.QRect(390, 160, 60, 20))
         self.select_pushButton_4.setObjectName("select_pushButton_4")
+        self.select_pushButton_4.setStyleSheet("""
+        QPushButton {
+            background-color: rgb(219, 219, 219); 
+            color: black;
+            border-radius: 5%;
+        }
+        QPushButton:hover {
+            background-color:gray;
+            color:white;
+            border: 1px solid black;
+        }
+    """)
 
         self.textEdit = QtWidgets.QLineEdit(self.centralwidget)
         self.textEdit.setGeometry(QtCore.QRect(10, 100, 121, 51))
         self.textEdit.setObjectName("textEdit")
 
         self.pushButton_5 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_5.setGeometry(QtCore.QRect(60, 150, 71, 21))
+        self.pushButton_5.setGeometry(QtCore.QRect(60, 160, 71, 21))
         self.pushButton_5.setObjectName("pushButton_5")
+        self.pushButton_5.setStyleSheet("""
+        QPushButton {
+            background-color: rgb(219, 219, 219); 
+            color: black;
+            border-radius: 5%;
+        }
+        QPushButton:hover {
+            background-color:gray;
+            color:white;
+            border: 1px solid black;
+        }
+    """)
 
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(133, 80, 300, 100))
+        self.label.setGeometry(QtCore.QRect(133, 90, 190, 100))
         self.label.setObjectName("label")
+        self.label.setWordWrap(True)
+
+        self.get_next = QtWidgets.QPushButton(self.centralwidget)
+        self.get_next.setGeometry(QtCore.QRect(200, 170, 71, 21))
+        self.get_next.setObjectName("get_text")
+        self.get_next.setStyleSheet("""
+        QPushButton {
+            background-color: rgb(219, 219, 219); 
+            color: black;
+            border-radius: 5%;
+        }
+        QPushButton:hover {
+            background-color:gray;
+            color:white;
+            border: 1px solid black;
+        }
+    """)
 
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
@@ -90,3 +203,5 @@ class Ui_MainWindow(object):
 
         self.pushButton_5.setText(_translate("MainWindow", "get data"))
         self.label.setText(_translate("MainWindow", ""))
+
+        self.get_next.setText(_translate("MainWindow", "get_next"))

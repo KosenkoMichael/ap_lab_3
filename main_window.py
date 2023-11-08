@@ -12,6 +12,7 @@ class Weather(QMainWindow):
         datae_path = ""
         years_path = ""
         weaks_path = ""
+        iter = ""
         super(Weather, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
@@ -26,10 +27,15 @@ class Weather(QMainWindow):
         self.ui.pushButton_2.clicked.connect(self.cut_by_datae)
         self.ui.pushButton_3.clicked.connect(self.cut_by_years)
         self.ui.pushButton_4.clicked.connect(self.cut_by_weaks)
+        self.ui.get_next.clicked.connect(self.show_next)
+
+    def show_next(self):
+        self.ui.label.setText(str(next(self.iter)))
 
     def select_main_filepath(self):
         filepath = QtWidgets.QFileDialog.getOpenFileName(self, 'Select File')
         self.main_path = filepath[0]
+        self.iter = lib.Iterator(filepath[0])
 
     def select_folder_for_datae(self):
         folderpath = QtWidgets.QFileDialog.getExistingDirectory(
