@@ -14,14 +14,14 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("Weather")
-        MainWindow.setFixedSize(461, 218)
+        MainWindow.setFixedSize(461, 255)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
 
-        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(10, 10, 121, 51))
-        self.pushButton.setObjectName("pushButton")
-        self.pushButton.setStyleSheet("""
+        self.main_file = QtWidgets.QPushButton(self.centralwidget)
+        self.main_file.setGeometry(QtCore.QRect(10, 10, 121, 51))
+        self.main_file.setObjectName("pushButton")
+        self.main_file.setStyleSheet("""
         QPushButton {
             background-color: rgb(219, 219, 219); 
             color: black;
@@ -34,10 +34,10 @@ class Ui_MainWindow(object):
         }
     """)
 
-        self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_2.setGeometry(QtCore.QRect(170, 10, 121, 51))
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.pushButton_2.setStyleSheet("""
+        self.cut_datae = QtWidgets.QPushButton(self.centralwidget)
+        self.cut_datae.setGeometry(QtCore.QRect(170, 10, 121, 51))
+        self.cut_datae.setObjectName("pushButton_2")
+        self.cut_datae.setStyleSheet("""
         QPushButton {
             background-color: rgb(219, 219, 219); 
             color: black;
@@ -50,10 +50,10 @@ class Ui_MainWindow(object):
         }
     """)
 
-        self.select_pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
-        self.select_pushButton_2.setGeometry(QtCore.QRect(230, 71, 60, 20))
-        self.select_pushButton_2.setObjectName("select_pushButton_2")
-        self.select_pushButton_2.setStyleSheet("""
+        self.folder_for_datae = QtWidgets.QPushButton(self.centralwidget)
+        self.folder_for_datae.setGeometry(QtCore.QRect(230, 71, 60, 20))
+        self.folder_for_datae.setObjectName("select_pushButton_2")
+        self.folder_for_datae.setStyleSheet("""
         QPushButton {
             background-color: rgb(219, 219, 219); 
             color: black;
@@ -66,10 +66,10 @@ class Ui_MainWindow(object):
         }
     """)
 
-        self.pushButton_3 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_3.setGeometry(QtCore.QRect(330, 10, 121, 51))
-        self.pushButton_3.setObjectName("pushButton_3")
-        self.pushButton_3.setStyleSheet("""
+        self.cut_years = QtWidgets.QPushButton(self.centralwidget)
+        self.cut_years.setGeometry(QtCore.QRect(330, 10, 121, 51))
+        self.cut_years.setObjectName("pushButton_3")
+        self.cut_years.setStyleSheet("""
         QPushButton {
             background-color: rgb(219, 219, 219); 
             color: black;
@@ -82,10 +82,10 @@ class Ui_MainWindow(object):
         }
     """)
 
-        self.select_pushButton_3 = QtWidgets.QPushButton(self.centralwidget)
-        self.select_pushButton_3.setGeometry(QtCore.QRect(390, 71, 60, 20))
-        self.select_pushButton_3.setObjectName("select_pushButton_3")
-        self.select_pushButton_3.setStyleSheet("""
+        self.folder_for_years = QtWidgets.QPushButton(self.centralwidget)
+        self.folder_for_years.setGeometry(QtCore.QRect(390, 71, 60, 20))
+        self.folder_for_years.setObjectName("select_pushButton_3")
+        self.folder_for_years.setStyleSheet("""
         QPushButton {
             background-color: rgb(219, 219, 219); 
             color: black;
@@ -98,10 +98,10 @@ class Ui_MainWindow(object):
         }
     """)
 
-        self.pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_4.setGeometry(QtCore.QRect(330, 100, 121, 51))
-        self.pushButton_4.setObjectName("pushButton_4")
-        self.pushButton_4.setStyleSheet("""
+        self.cut_weaks = QtWidgets.QPushButton(self.centralwidget)
+        self.cut_weaks.setGeometry(QtCore.QRect(330, 100, 121, 51))
+        self.cut_weaks.setObjectName("pushButton_4")
+        self.cut_weaks.setStyleSheet("""
         QPushButton {
             background-color: rgb(219, 219, 219); 
             color: black;
@@ -114,10 +114,10 @@ class Ui_MainWindow(object):
         }
     """)
 
-        self.select_pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
-        self.select_pushButton_4.setGeometry(QtCore.QRect(390, 160, 60, 20))
-        self.select_pushButton_4.setObjectName("select_pushButton_4")
-        self.select_pushButton_4.setStyleSheet("""
+        self.folder_for_weaks = QtWidgets.QPushButton(self.centralwidget)
+        self.folder_for_weaks.setGeometry(QtCore.QRect(390, 160, 60, 20))
+        self.folder_for_weaks.setObjectName("select_pushButton_4")
+        self.folder_for_weaks.setStyleSheet("""
         QPushButton {
             background-color: rgb(219, 219, 219); 
             color: black;
@@ -134,10 +134,40 @@ class Ui_MainWindow(object):
         self.textEdit.setGeometry(QtCore.QRect(10, 100, 121, 51))
         self.textEdit.setObjectName("textEdit")
 
-        self.pushButton_5 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_5.setGeometry(QtCore.QRect(60, 160, 71, 21))
-        self.pushButton_5.setObjectName("pushButton_5")
-        self.pushButton_5.setStyleSheet("""
+        self.find_years = QtWidgets.QPushButton(self.centralwidget)
+        self.find_years.setGeometry(QtCore.QRect(50, 180, 81, 21))
+        self.find_years.setObjectName("pushButton_5")
+        self.find_years.setStyleSheet("""
+        QPushButton {
+            background-color: rgb(219, 219, 219); 
+            color: black;
+            border-radius: 5%;
+        }
+        QPushButton:hover {
+            background-color:gray;
+            color:white;
+            border: 1px solid black;
+        }
+    """)
+        self.find_weaks = QtWidgets.QPushButton(self.centralwidget)
+        self.find_weaks.setGeometry(QtCore.QRect(50, 205, 81, 21))
+        self.find_weaks.setObjectName("pushButton_5")
+        self.find_weaks.setStyleSheet("""
+        QPushButton {
+            background-color: rgb(219, 219, 219); 
+            color: black;
+            border-radius: 5%;
+        }
+        QPushButton:hover {
+            background-color:gray;
+            color:white;
+            border: 1px solid black;
+        }
+    """)
+        self.find_datae = QtWidgets.QPushButton(self.centralwidget)
+        self.find_datae.setGeometry(QtCore.QRect(50, 155, 81, 21))
+        self.find_datae.setObjectName("pushButton_5")
+        self.find_datae.setStyleSheet("""
         QPushButton {
             background-color: rgb(219, 219, 219); 
             color: black;
@@ -187,21 +217,23 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.pushButton.setText(_translate("MainWindow", "Select main file"))
+        self.main_file.setText(_translate("MainWindow", "Select main file"))
 
-        self.select_pushButton_2.setText(
+        self.folder_for_datae.setText(
             _translate("MainWindow", "add folder"))
-        self.pushButton_2.setText(_translate("MainWindow", "Cut by data/date"))
+        self.cut_datae.setText(_translate("MainWindow", "Cut by data/date"))
 
-        self.select_pushButton_3.setText(
+        self.folder_for_years.setText(
             _translate("MainWindow", "add folder"))
-        self.pushButton_3.setText(_translate("MainWindow", "Cut by years"))
+        self.cut_years.setText(_translate("MainWindow", "Cut by years"))
 
-        self.pushButton_4.setText(_translate("MainWindow", "cut by weaks"))
-        self.select_pushButton_4.setText(
+        self.cut_weaks.setText(_translate("MainWindow", "cut by weaks"))
+        self.folder_for_weaks.setText(
             _translate("MainWindow", "add folder"))
 
-        self.pushButton_5.setText(_translate("MainWindow", "get data"))
+        self.find_years.setText(_translate("MainWindow", "find in years"))
+        self.find_weaks.setText(_translate("MainWindow", "find in weaks"))
+        self.find_datae.setText(_translate("MainWindow", "find in data/e"))
         self.label.setText(_translate("MainWindow", ""))
 
         self.get_next.setText(_translate("MainWindow", "get_next"))

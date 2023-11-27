@@ -1,4 +1,5 @@
 import sys
+import os
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import (QWidget, QLabel,
                              QComboBox, QApplication, QMainWindow)
@@ -16,17 +17,19 @@ class Weather(QMainWindow):
         super(Weather, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.ui.pushButton.clicked.connect(self.select_main_filepath)
-        self.ui.select_pushButton_2.clicked.connect(
+        self.ui.main_file.clicked.connect(self.select_main_filepath)
+        self.ui.folder_for_datae.clicked.connect(
             self.select_folder_for_datae)
-        self.ui.select_pushButton_3.clicked.connect(
+        self.ui.folder_for_years.clicked.connect(
             self.select_folder_for_years)
-        self.ui.select_pushButton_4.clicked.connect(
+        self.ui.folder_for_weaks.clicked.connect(
             self.select_folder_for_weaks)
-        self.ui.pushButton_5.clicked.connect(self.get_data)
-        self.ui.pushButton_2.clicked.connect(self.cut_by_datae)
-        self.ui.pushButton_3.clicked.connect(self.cut_by_years)
-        self.ui.pushButton_4.clicked.connect(self.cut_by_weaks)
+        self.ui.find_years.clicked.connect(self.get_data_years)
+        self.ui.find_weaks.clicked.connect(self.get_data_weaks)
+        self.ui.find_datae.clicked.connect(self.get_data_datae)
+        self.ui.cut_datae.clicked.connect(self.cut_by_datae)
+        self.ui.cut_years.clicked.connect(self.cut_by_years)
+        self.ui.cut_weaks.clicked.connect(self.cut_by_weaks)
         self.ui.get_next.clicked.connect(self.show_next)
 
     def show_next(self):
@@ -52,9 +55,19 @@ class Weather(QMainWindow):
             self, 'Select Folder')
         self.weaks_path = folderpath
 
-    def get_data(self):
+    def get_data_years(self):
         cur_data = self.ui.textEdit.text()
-        data = str(lib.find_data_weeks(self.years_path, cur_data))
+        data = str(lib.find_data_years(self.years_path, cur_data))
+        self.ui.label.setText(data)
+
+    def get_data_weaks(self):
+        cur_data = self.ui.textEdit.text()
+        data = str(lib.find_data_weeks(self.weaks_path, cur_data))
+        self.ui.label.setText(data)
+
+    def get_data_datae(self):
+        cur_data = self.ui.textEdit.text()
+        data = str(lib.find_data_datA_E(os.path.join(self.datae_path, "X.csv"),os.path.join(self.datae_path, "Y.csv"), cur_data))
         self.ui.label.setText(data)
 
     def cut_by_datae(self):
