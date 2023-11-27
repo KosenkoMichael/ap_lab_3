@@ -4,7 +4,12 @@ import os
 
 
 def file_cut_date_and_data(path: str, folder: str) -> None:
-    """open file and cut it on 2 files (file with data and file with date)"""
+    """Cut .csv file on data and date files
+
+    Args:
+        path (str): path to original dataset
+        folder (str): path to folder with result .csv files
+    """
     date = []
     data = []
     with open(path, "r", encoding="utf-8", newline="") as file:
@@ -22,6 +27,15 @@ def file_cut_date_and_data(path: str, folder: str) -> None:
 
 
 def find_data_dataset(path: str, data: str) -> tuple:
+    """Find date in original dataset
+
+    Args:
+        path (str): path to original dataset
+        data (str): date, we want to find
+
+    Returns:
+        tuple: (date, data)
+    """
     with open(path, "r", encoding="utf-8", newline="") as file:
         reader = csv.reader(file)
         for row in reader:
@@ -34,6 +48,16 @@ def find_data_dataset(path: str, data: str) -> tuple:
 
 
 def find_data_datA_E(path_X: str, path_Y: str, data: str) -> tuple:
+    """Find data in dataset (data, date)
+
+    Args:
+        path_X (str): path to .csv with date
+        path_Y (str): path to .csv with data
+        data (str): date, we want to find
+
+    Returns:
+        tuple: (date, data)
+    """
     pos = 1
     with open(path_X, "r", encoding="utf-8", newline="") as file:
         reader = csv.reader(file)
@@ -51,6 +75,15 @@ def find_data_datA_E(path_X: str, path_Y: str, data: str) -> tuple:
 
 
 def find_data_years(path: str, data: str) -> tuple:
+    """Find date in dataset (years)
+
+    Args:
+        path (str): path to folder with datasets
+        data (str): date, we want to find
+
+    Returns:
+        tuple: (date, data)
+    """
     year = data[6:10]
     if os.path.isfile(f"{path}\\{year}0101-{year}1231.csv"):
         with open(f"{path}\\{year}0101-{year}1231.csv", "r", encoding="utf-8", newline="") as file_N:
@@ -66,6 +99,15 @@ def find_data_years(path: str, data: str) -> tuple:
 
 
 def find_data_weeks(path: str, data: str) -> tuple:
+    """find date in dataset (weeks)
+
+    Args:
+        path (str): path to folder with datasets
+        data (str): date, we want to find
+
+    Returns:
+        tuple: (date, data)
+    """
     month = data[3:5]
     year = data[6:10]
     file_names = os.listdir(path)
@@ -83,7 +125,13 @@ def find_data_weeks(path: str, data: str) -> tuple:
     return None
 
 
-def N_cut_by_week(path: str, folder: str):
+def N_cut_by_week(path: str, folder: str) -> None:
+    """Cut original dataset to weeks
+
+    Args:
+        path (str): path to original dataset
+        folder (str): path to result folder
+    """
     day_x = ""
     for year in range(2008, 2024):
         for month in range(1, 12):
@@ -106,7 +154,12 @@ def N_cut_by_week(path: str, folder: str):
 
 
 def N_cut_by_year(path: str, folder: str) -> None:
-    """open file and cut it on N files (1file = 1year)"""
+    """Cut original dataset on years
+
+    Args:
+        path (str): path to original dataset
+        folder (str): path to folder with result datasets
+    """
     for year in range(2008, 2024):
         data = []
         with open(path, "r", encoding="utf-8", newline="") as file:
@@ -152,6 +205,17 @@ class Iterator:
 
 
 def next_iter(path: str) -> tuple:
+    """Get next element in dataset
+
+    Args:
+        path (str): path to .csv file, we want to iterate
+
+    Returns:
+        tuple: (date, data)
+
+    Yields:
+        Iterator[tuple]: (date, data)
+    """
     with open(path, "r", encoding="utf-8", newline="") as file:
         reader = csv.reader(file)
         for row in reader:
