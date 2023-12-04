@@ -16,7 +16,7 @@ def file_cut_date_and_data(path: str, folder: str) -> None:
         reader = csv.reader(file)
         for row in reader:
             date.append([row[0]])
-            data.append([row[i] for i in range(1, 7)])
+            data.append([row[i] for i in range(1, 9)])
     with open(f"{folder}\\X.csv", "w", encoding="utf-8", newline="") as file_x:
         writer = csv.writer(file_x)
         writer.writerows(date)
@@ -27,23 +27,25 @@ def file_cut_date_and_data(path: str, folder: str) -> None:
 
 
 def find_data_dataset(path: str, data: str) -> tuple:
-    """Find date in original dataset
+    """ Function: find data in original dataset
 
     Args:
         path (str): path to original dataset
         data (str): date, we want to find
 
     Returns:
-        tuple: (date, data)
+        tuple: ((date, we find), (data, we found))
     """
-    with open(path, "r", encoding="utf-8", newline="") as file:
-        reader = csv.reader(file)
-        for row in reader:
-            if data == row[0]:
-                mass = []
-                for i in range(1, len(row)):
-                    mass.append(row[i])
-                return (data, mass)
+    try:
+        with open(path, "r", encoding="utf-8", newline="") as file:
+            reader = csv.reader(file)
+            for row in reader:
+                if data == row[0]:
+                    mass = []
+                    for i in range(1, len(row)):
+                        mass.append(row[i])
+                    return (data, mass)
+    except:
         return None
 
 
@@ -58,19 +60,21 @@ def find_data_datA_E(path_X: str, path_Y: str, data: str) -> tuple:
     Returns:
         tuple: (date, data)
     """
-    pos = 1
-    with open(path_X, "r", encoding="utf-8", newline="") as file:
-        reader = csv.reader(file)
-        for row in reader:
-            if data == row[0]:
-                break
-            pos += 1
-    with open(path_Y, "r", encoding="utf-8", newline="") as file:
-        reader = csv.reader(file)
-        for row in reader:
-            pos -= 1
-            if pos == 0:
-                return (data, row)
+    try:
+        pos = 1
+        with open(path_X, "r", encoding="utf-8", newline="") as file:
+            reader = csv.reader(file)
+            for row in reader:
+                if data == row[0]:
+                    break
+                pos += 1
+        with open(path_Y, "r", encoding="utf-8", newline="") as file:
+            reader = csv.reader(file)
+            for row in reader:
+                pos -= 1
+                if pos == 0:
+                    return (data, row)
+    except:
         return None
 
 
@@ -84,9 +88,9 @@ def find_data_years(path: str, data: str) -> tuple:
     Returns:
         tuple: (date, data)
     """
-    year = data[6:10]
-    if os.path.isfile(f"{path}\\{year}0101-{year}1231.csv"):
-        with open(f"{path}\\{year}0101-{year}1231.csv", "r", encoding="utf-8", newline="") as file_N:
+    try:
+        year = data[0:4]
+        with open(f"{path}\\{year}-01-01-{year}-12-31.csv", "r", encoding="utf-8", newline="") as file_N:
             reader = csv.reader(file_N)
             for row in reader:
                 if data == row[0]:
@@ -94,8 +98,9 @@ def find_data_years(path: str, data: str) -> tuple:
                     for i in range(1, len(row)):
                         mass.append(row[i])
                     return (data, mass)
-    time.sleep(0.1)
-    return None
+        time.sleep(0.01)
+    except:
+        return None
 
 
 def find_data_weeks(path: str, data: str) -> tuple:
@@ -108,21 +113,23 @@ def find_data_weeks(path: str, data: str) -> tuple:
     Returns:
         tuple: (date, data)
     """
-    month = data[3:5]
-    year = data[6:10]
-    file_names = os.listdir(path)
-    for file_name in file_names:
-        file_path = os.path.join(path, file_name)
-        if os.path.isfile(file_path) and month and year in file_name:
-            with open(file_path, "r", encoding="utf-8", newline="") as file:
-                reader = csv.reader(file)
-                for row in reader:
-                    if data == row[0]:
-                        mass = []
-                        for i in range(1, len(row)):
-                            mass.append(row[i])
-                        return (data, mass)
-    return None
+    try:
+        month = data[5:7]
+        year = data[0:4]
+        file_names = os.listdir(path)
+        for file_name in file_names:
+            file_path = os.path.join(path, file_name)
+            if os.path.isfile(file_path) and month and year in file_name:
+                with open(file_path, "r", encoding="utf-8", newline="") as file:
+                    reader = csv.reader(file)
+                    for row in reader:
+                        if data == row[0]:
+                            mass = []
+                            for i in range(1, len(row)):
+                                mass.append(row[i])
+                            return (data, mass)
+    except:
+        return None
 
 
 def N_cut_by_week(path: str, folder: str) -> None:
@@ -132,24 +139,22 @@ def N_cut_by_week(path: str, folder: str) -> None:
         path (str): path to original dataset
         folder (str): path to result folder
     """
-    day_x = ""
     for year in range(2008, 2024):
-        for month in range(1, 12):
+        for month in range(1, 13):
             for i in range(0, 5):
-                with open(f"{path}", "r", encoding="utf-8", newline="") as file:
+                with open(path, "r", encoding="utf-8", newline="") as file:
                     reader = csv.reader(file)
                     data = []
                     for row in reader:
                         for day in range(1+7*i, 8+7*i):
-                            if str(day).zfill(2) == row[0][0]+row[0][1] and str(month).zfill(2) == row[0][3]+row[0][4] and str(year).zfill(4) == row[0][6]+row[0][7]+row[0][8]+row[0][9]:
+                            if "-".join((map(lambda x: str(x).zfill(2),  list([year, month, day])))) == row[0]:
                                 data.append(row)
-                                day_x = row[0]
-                time.sleep(0.1)
+                time.sleep(0.01)
                 if len(data):
-                    with open(f"{folder}\\{year}.{month}.{1+7*i}-{year}.{month}.{day_x}.csv", "w", encoding="utf-8", newline="") as file_N:
+                    with open(f"{folder}\\{year}-{month}-{data[0][0][8:10]}-{year}-{month}-{data[-1][0][8:10]}.csv", "w", encoding="utf-8", newline="") as file_N:
                         writer = csv.writer(file_N)
                         writer.writerows(data)
-                time.sleep(0.1)
+                time.sleep(0.01)
     print("end")
 
 
@@ -165,10 +170,10 @@ def N_cut_by_year(path: str, folder: str) -> None:
         with open(path, "r", encoding="utf-8", newline="") as file:
             reader = csv.reader(file)
             for row in reader:
-                if f".{year}" in row[0]:
+                if str(year) in row[0]:
                     data.append(row)
         time.sleep(0.1)
-        with open(f"{folder}\\{year}0101-{year}1231.csv", "w", encoding="utf-8", newline="") as file_N:
+        with open(f"{folder}\\{year}-01-01-{year}-12-31.csv", "w", encoding="utf-8", newline="") as file_N:
             writer = csv.writer(file_N)
             writer.writerows(data)
         time.sleep(0.1)
@@ -176,7 +181,12 @@ def N_cut_by_year(path: str, folder: str) -> None:
 
 
 class Iterator:
-    def __init__(self, path):
+    def __init__(self, path: str):
+        """Initializarion
+
+        Args:
+            path (srr): path to file to iterate
+        """
         with open(path, "r", encoding="utf-8", newline="") as file:
             text = file.readlines()
             self.limit = len(text)
@@ -187,6 +197,12 @@ class Iterator:
         return self
 
     def __next__(self):
+        """ Get next element
+
+        Returns:
+            tuple: if next element consist
+            None: if the file has ended
+        """
         if self.counter < self.limit:
             self.counter += 1
             with open(self.path, "r", encoding="utf-8", newline="") as file:
@@ -205,16 +221,16 @@ class Iterator:
 
 
 def next_iter(path: str) -> tuple:
-    """Get next element in dataset
+    """get next date in file
 
     Args:
-        path (str): path to .csv file, we want to iterate
+        path (str): path to dataset.csv 
 
     Returns:
-        tuple: (date, data)
+        tuple: ((date, we find), (data, we found))
 
     Yields:
-        Iterator[tuple]: (date, data)
+        Iterator[tuple]: ((date, we find), (data, we found))
     """
     with open(path, "r", encoding="utf-8", newline="") as file:
         reader = csv.reader(file)
