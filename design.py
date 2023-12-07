@@ -232,7 +232,7 @@ class Ui_MainWindow(object):
             _translate("MainWindow", "add folder"))
 
         self.find_years.setText(_translate("MainWindow", "find in years"))
-        self.find_weaks.setText(_translate("MainWindow", "find in weaks"))
+        self.find_weaks.setText(_translate("MainWindow", "find in weeks"))
         self.find_datae.setText(_translate("MainWindow", "find in data/e"))
         self.label.setText(_translate("MainWindow", ""))
 

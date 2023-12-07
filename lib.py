@@ -1,6 +1,7 @@
 import csv
 import time
 import os
+import datetime
 
 
 def file_cut_date_and_data(path: str, folder: str) -> None:
@@ -26,7 +27,7 @@ def file_cut_date_and_data(path: str, folder: str) -> None:
     print("end")
 
 
-def find_data_dataset(path: str, data: str) -> tuple:
+def find_data_dataset(path: str, data: datetime) -> tuple | None:
     """ Function: find data in original dataset
 
     Args:
@@ -49,7 +50,7 @@ def find_data_dataset(path: str, data: str) -> tuple:
         return None
 
 
-def find_data_datA_E(path_X: str, path_Y: str, data: str) -> tuple:
+def find_data_datA_E(path_X: str, path_Y: str, data: datetime) -> tuple | None:
     """Find data in dataset (data, date)
 
     Args:
@@ -78,7 +79,7 @@ def find_data_datA_E(path_X: str, path_Y: str, data: str) -> tuple:
         return None
 
 
-def find_data_years(path: str, data: str) -> tuple:
+def find_data_years(path: str, data: datetime) -> tuple | None:
     """Find date in dataset (years)
 
     Args:
@@ -103,7 +104,7 @@ def find_data_years(path: str, data: str) -> tuple:
         return None
 
 
-def find_data_weeks(path: str, data: str) -> tuple:
+def find_data_weeks(path: str, data: datetime) -> tuple | None:
     """find date in dataset (weeks)
 
     Args:
